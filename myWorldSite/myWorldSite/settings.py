@@ -32,9 +32,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://radiant-brushlands-79772-293c5a123503.herokuapp.com/", "http://127.0.0.1:8000", "127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = ["https://radiant-brushlands-79772-293c5a123503.herokuapp.com/", "http://127.0.0.1:8000"]
 
 
 # Application definition
