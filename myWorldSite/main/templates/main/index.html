@@ -113,7 +113,7 @@ Start Content
           </div>
         </div>
         {% for p in portfolio %}
-        {% if p.is_active %}
+        {% if p.is_active and forloop.counter <= 4 %}
         <div class="portfolioCard">
           <div class="row g-4 align-items-center">
             <div class="col-md-auto">
