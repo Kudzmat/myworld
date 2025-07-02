@@ -1,0 +1,42 @@
+{% load static %}
+<!-- ================================
+Start Navigation Bar
+================================= -->
+<header>
+  <div class="headerCol">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <div class="logoCol">
+            <a href="{% url 'main:home' %}">
+              <img src="{% static 'images/7.png' %}" style="width:100px" alt="...">
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-md-none">
+            <button class="navToggle">
+              <span class="navToggle__text">Toggle Menu</span>
+            </button>
+          </div>
+          <div class="navCollapseCol">
+            <div class="navCol">
+              <ul class="navbar-nav">
+                <li><a href="{% url 'main:home' %}">Home</a></li>
+                <li><a href="{% url 'main:portfolios' %}">Creative Studio</a></li>
+                <li><a href="{% url 'main:blogs' %}">Community & Open-Source</a></li>
+                <li><a href="{% url 'vibe_check:vibe_check' %}">Vibe Check</a></li>
+                <li><a href="{% url 'projects:personal_projects' %}">Personal Projects</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================================
+End Navigation Bar
+================================= -->
