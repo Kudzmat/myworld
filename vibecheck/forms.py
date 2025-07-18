@@ -7,5 +7,5 @@ class SongSearchForm(forms.Form):
         label="Your Name/Nickname",
         max_length=100,
         required=False,
-        help_text="We’ll show this as a contributor"
+        help_text="I'll show this as your contributor name. If you leave it blank, I’ll use 'Anonymous👽.' "
     )
