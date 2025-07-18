@@ -41,13 +41,19 @@ def get_contributor_names():
     contributors = VibeCheckEntry.objects.all()
     seen = set()
     names = []
+    counter = 1
 
     for contributor in contributors:
         name = contributor.added_by
+        if name == "" or name is None:
+            name = f"Anonymous👽 #{counter}"
+            counter += 1
+        
+        # Ensure we only add unique names
+        # and avoid duplicate names
         if name not in seen:
             names.append(name)
             seen.add(name) # Avoid multiple entries of the same person 
-
     names.sort()
     return names
 
