@@ -1,0 +1,183 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3 align-items-center">
+        <div class="col-md-8">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">About</h1>
+            <p class="lead text-muted">
+            I consider myself a creative thinker. I've always had a curiousity about the world and enjoy exploring different interests. 
+            I have a passion for building communities, simplifying complex topics, and creating networks through shared interests, goals, and collaboration.
+            Here's a little about my journey so far. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectionSpaceSm">
+  <div class="container">
+    <div class="storyContent">
+
+      <hr>
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">My Work Currently</h2>
+      <p>
+        I started exploring computers and software at a young age, and all of that experience led to my career as a software engineer. I currently work at Two Rock Software, a Django
+        consultancy based in Durham, North Carolina.
+      </p>
+      <p>
+        I build custom web applications using Django, Python, JavaScript, and Vue.js, working across the full
+        stack, from backend architecture to frontend user experience. My work spans complex business applications,
+        API integrations, data modelling, and the day-to-day engineering that helps clients solve real operational
+        problems.
+      </p>
+      <p>
+        Working at a small consultancy has given me the opportunity to wear many hats: software engineering,
+        architecture, product thinking, and collaborating directly with clients to understand not just what they
+        want to build, but why they need it. Outside of my full-time role, I also work with a handful of freelance
+        clients.
+      </p>
+      <p>
+        When I'm not writing code, I also work as a tradesman, buying and supplying hardware products to
+        businesses in Zimbabwe. It's something I've been doing for over half a decade, and I enjoy it because
+        it gives me a break from computers while exercising a completely different set of skills.
+      </p>
+      <hr>
+
+      <hr>
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">Community and Open Source</h2>
+      <p>
+        <a href="https://www.shotgeek.com/" target="_blank" rel="noopener">ShotGeek</a> is my largest personal project and the one that best represents the kind of engineer I strive to be.
+      </p>
+      <p>
+        What started as a way to combine my love of basketball and programming has grown into an open-source web
+        application for NBA fans. It provides player statistics, historical data, visualisations, player
+        comparisons, shot charts, and other tools for exploring the game through data.
+      </p>
+      <p>
+        ShotGeek has also become a platform for introducing developers to open source. I've led contribution
+        sprints across Africa and the United States, helping first-time contributors make meaningful
+        contributions to the project. Developers from around the world have contributed to ShotGeek, making
+        it as much about community as it is about basketball.
+      </p>
+      <p>
+        You can also read about the project's redesign on
+        <a href="https://medium.com/@kudzayibamhare/the-shotgeek-rebuild-design-fc87f50546ff" target="_blank" rel="noopener">my blog</a>.
+      </p>
+      <p>
+        Beyond ShotGeek, I enjoy contributing to the Python and Django communities. I serve as the Regional
+        Executor for Southern Africa on the Leadership Council of Black Python Devs, a global non-profit
+        organisation supporting Black, African, Coloured, and Afro-Latino Python developers. I also
+        represented Southern Africa as a Regional Ambassador for GitHub's All In Africa programme from 2024
+        to 2025.
+      </p>
+      <p>
+        I've helped organise conferences including DjangoCon Africa, DjangoCon US, and PyCon Zimbabwe. In
+        2025, I served as Code of Conduct Chair for DjangoCon US, and in 2026 I became Sprints Committee
+        Co-chair, helping create a welcoming environment for contributors from around the world.
+      </p>
+      <p>
+        Watch my
+        <a href="https://www.youtube.com/watch?si=gKq9Rglhx0-3SL-P&v=-TCSzQMr9ng&feature=youtu.be" target="_blank" rel="noopener">DjangoCon US 2025 talk</a>
+        about using ShotGeek as a vehicle for open source and community building.
+      </p>
+      <hr>
+
+      <hr>
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">The Classroom</h2>
+      <p>
+        Teaching is another part of the work I love. I'm a certified Software Carpentries instructor and
+        have served as a Section Leader for Stanford University's Code in Place since 2023, mentoring
+        students as they learn Python.
+      </p>
+      <p>
+        I've organised introductory Python workshops in Harare for complete beginners and helped run Django
+        Girls Harare, introducing women to web development with Django. Through PyCon Namibia's education
+        days, I've also visited high schools and universities to teach Python and encourage students to
+        pursue careers in technology.
+      </p>
+      <p>
+        At conferences, I've delivered beginner-friendly Pygame workshops at both PyCon Namibia and PyCon
+        Africa, using game development to teach Python fundamentals. You can also listen to my episode of
+        the <a href="https://www.teachingpython.fm/144" target="_blank" rel="noopener">Teaching Python podcast</a>,
+        where I talk about my journey into teaching and community education.
+      </p>
+      <hr>
+
+      <hr>
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">The Stage</h2>
+      <p>
+        I regularly speak at Python and other tech related conferences about building software, designing
+        products, and creating welcoming pathways into open source. My goal is to help more developers, particularly
+        across Africa, gain the confidence and experience to contribute to projects with global impact.
+      </p>
+      <ul class="storyContent__talks">
+        <li>Black Python Devs Leadership Summit 2024</li>
+        <li>GitHub Constellation 2024</li>
+        <li>PyCon Namibia 2024, 2025</li>
+        <li>DjangoCon Africa 2025</li>
+        <li>DjangoCon US 2025</li>
+        <li>PyCon Africa 2025</li>
+      </ul>
+      <hr>
+
+      <hr>
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">My Work Previously</h2>
+      <p>
+        My professional career began in marketing before I transitioned into software engineering.
+      </p>
+      <p>
+        While studying at the University of Cape Town, I interned at a market research firm under one of my
+        marketing professors. After graduating, I returned to Zimbabwe, where I worked in marketing for a human
+        resources company before moving into the renewable energy sector.
+      </p>
+      <p>
+        Working in renewable energy exposed me to far more than marketing. I found myself involved in sales,
+        business development, research, digital media, and operations, supporting projects across Zimbabwe and
+        Zambia. Looking back, those experiences taught me to think beyond technology and understand the business
+        problems that software is ultimately meant to solve.
+      </p>
+      <hr>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+<!-- ================================
+End Content
+================================= -->

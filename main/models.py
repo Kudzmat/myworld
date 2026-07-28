@@ -142,6 +142,28 @@ class Blog(models.Model):
         return f"/blog/{self.slug}"
 
 
+class Highlight(models.Model):
+    class Meta:
+        verbose_name_plural = 'Highlights'
+        verbose_name = 'Highlight'
+
+    CATEGORY_CHOICES = [
+        ('book', 'Reading'),
+        ('show', 'Watching'),
+        ('game', 'Playing'),
+        ('album', 'Listening To'),
+    ]
+
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, unique=True)
+    title = models.CharField(max_length=200)
+    creator = models.CharField(max_length=200, blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to="highlights")
+    link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.get_category_display()}: {self.title}"
+
+
 class Certificate(models.Model):
     class Meta:
         verbose_name_plural = 'Certificates'

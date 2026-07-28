@@ -6,7 +6,8 @@ from .models import (
     Blog,
     Portfolio,
     Testimonial,
-    Certificate
+    Certificate,
+    Highlight,
 )
 
 from django.views import generic
@@ -25,10 +26,14 @@ class IndexView(generic.TemplateView):
         blogs = Blog.objects.filter(is_active=True)
         portfolio = Portfolio.objects.filter(is_active=True)
 
+        category_order = [category for category, _ in Highlight.CATEGORY_CHOICES]
+        highlights = sorted(Highlight.objects.all(), key=lambda h: category_order.index(h.category))
+
         context["testimonials"] = testimonials
         #context["certificates"] = certificates
         context["blogs"] = blogs
         context["portfolio"] = portfolio
+        context["highlights"] = highlights
         return context
 
 
@@ -69,3 +74,7 @@ class BlogView(generic.ListView):
 class BlogDetailView(generic.DetailView):
     model = Blog
     template_name = "main/blog-detail.html"
+
+
+class WorkView(generic.TemplateView):
+    template_name = "main/work.html"

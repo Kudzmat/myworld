@@ -26,3 +26,25 @@ class PersonalProject(models.Model):
 
     def get_absolute_url(self):
         return f"/personal-project/{self.slug}"
+
+
+class ShortStory(models.Model):
+    class Meta:
+        verbose_name_plural = 'Short Stories'
+        verbose_name = 'Short Story'
+
+    title = models.CharField(max_length=200, blank=True, null=True)
+    plot = models.CharField(max_length=500, blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
+    slug = models.SlugField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super(ShortStory, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return f"/short-stories/{self.slug}"

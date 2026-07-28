@@ -3,11 +3,10 @@ import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from dotenv import load_dotenv
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
 
 from .models import VibeCheckEntry
 from .forms import SongSearchForm
+from .spotify_utils import get_spotify_client
 
 # Load environment variables
 load_dotenv()
@@ -16,25 +15,10 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 # Load and assert required env vars
-CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
-CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
-SPOTIFY_REDIRECT_URI = os.getenv('SPOTIPY_REDIRECT_URI')
 SPOTIFY_USER_ID = os.getenv('SPOTIFY_USER_ID')
 PLAYLIST_ID = os.getenv('VIBE_CHECK_PLAYLIST_ID')
-SCOPE = "user-library-read user-top-read playlist-modify-public user-follow-read user-library-read " \
-        "playlist-read-private playlist-modify-private "
-CACHE_PATH = ".cache-vibecheck"
 
-assert CLIENT_ID, "SPOTIFY_CLIENT_ID is missing from environment."
-assert CLIENT_SECRET, "SPOTIFY_CLIENT_SECRET is missing from environment."
-assert SPOTIFY_REDIRECT_URI, "SPOTIFY_REDIRECT_URI is missing from environment."
 assert PLAYLIST_ID, "VIBE_CHECK_PLAYLIST_ID is missing from environment."
-
-def get_spotify_client():
-    return spotipy.Spotify(auth_manager=SpotifyOAuth(
-        scope=SCOPE,
-        cache_path=CACHE_PATH
-    ))
 
 # Get names of contributors
 def get_contributor_names():

@@ -6,6 +6,8 @@ font-family: 'Heebo', sans-serif; */
   --primaryDarkColor: #3D0048;
   --primaryHoverColor: #900AA8;
   --secondaryColor: #F9B000;
+  --accentTeal: #0EA5A0;
+  --accentPink: #E85D75;
   --baseColor: #21243D;
   --baseFont: 'Heebo', sans-serif;
   --titleFont: 'Courier Prime', monospace;
@@ -764,6 +766,194 @@ body.navToggleActive {
   }
 }
 
+.exploreList li {
+  border-bottom: 1px solid #e0e0e0;
+}
+.exploreList li:first-child {
+  border-top: 1px solid #e0e0e0;
+}
+.exploreList li a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  font-size: 22px;
+  font-weight: var(--medium);
+  font-family: var(--titleFont);
+}
+.exploreList__icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.storyContent {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.storyContent h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--titleFont);
+  font-weight: var(--bold);
+  font-size: 26px;
+  color: var(--primaryColor);
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+.storyContent__icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.storyContent h2:first-child {
+  margin-top: 0;
+}
+.storyContent h3 {
+  font-family: var(--titleFont);
+  font-weight: var(--medium);
+  font-size: 20px;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+.storyContent p {
+  margin-bottom: 20px;
+}
+.storyContent a {
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+.storyContent a:hover {
+  color: var(--primaryDarkColor);
+}
+.storyContent .storyMeta {
+  color: var(--primaryColor);
+  font-size: 15px;
+  font-weight: var(--medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.storyCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+.storyCard:hover {
+  border-color: var(--primaryColor);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  color: inherit;
+}
+.storyCard__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.storyCard__title {
+  font-family: var(--titleFont);
+  font-weight: var(--bold);
+  font-size: 22px;
+  color: var(--primaryColor);
+  margin-bottom: 8px;
+}
+.storyCard__plot {
+  font-size: 16px;
+  color: var(--baseColor);
+  margin-bottom: 0;
+}
+
+.storyContent__talks {
+  margin-bottom: 20px;
+}
+.storyContent__talks li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.storyContent__talks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primaryColor);
+}
+
+.highlightCard {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bs-white);
+  border-top: 4px solid var(--primaryColor);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+.highlightCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  color: inherit;
+}
+.highlightCard--show {
+  border-top-color: var(--secondaryColor);
+}
+.highlightCard--game {
+  border-top-color: var(--accentTeal);
+}
+.highlightCard--album {
+  border-top-color: var(--accentPink);
+}
+.highlightCard__img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.highlightCard__body {
+  padding: 16px;
+}
+.highlightCard__label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: var(--bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primaryColor);
+  margin-bottom: 6px;
+}
+.highlightCard--show .highlightCard__label {
+  color: var(--secondaryColor);
+}
+.highlightCard--game .highlightCard__label {
+  color: var(--accentTeal);
+}
+.highlightCard--album .highlightCard__label {
+  color: var(--accentPink);
+}
+.highlightCard__title {
+  font-family: var(--titleFont);
+  font-weight: var(--bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.highlightCard__creator {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
 input[type=text], input[type=email], select, textarea {
   width: 100%;
   padding: 12px;
@@ -773,4 +963,62 @@ input[type=text], input[type=email], select, textarea {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical
+}
+
+.vibeCheckForm {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.vibeCheckForm label {
+  font-weight: var(--medium);
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+.vibeCheckForm input[type=text] {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  font-size: 15px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.vibeCheckForm input[type=text]:focus {
+  outline: none;
+  border-color: var(--primaryColor);
+}
+.vibeCheckForm .helptext {
+  font-size: 12px;
+  color: #6c757d;
+}
+.vibeCheckForm .btn {
+  border-radius: 24px;
+}
+
+.songCard {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--lightBg);
+}
+.songCard::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 140px;
+  height: 140px;
+  background-image: url('../images/10.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.songCard > * {
+  position: relative;
+  z-index: 1;
 }

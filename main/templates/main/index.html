@@ -42,15 +42,8 @@ Start Content
         </div>
         <div class="col-md">
           <div class="bannerContent">
-            <h1 class="xlTitle pb-3">Hi, I’m {{me.first_name|title}}, <br> a {{me.userprofile.title}} </br></h1>
-            <p><i>{{me.userprofile.bio}}</i></p>
-            <div class="bannerBtnCol">
-              <div class="row">
-                <div class="col-auto">
-                  <a download href="{{me.userprofile.cv.url}}" class="btn btnPrimary">Download Resume</a>
-                </div>
-              </div>
-            </div>
+            <h1 class="xlTitle pb-3">Hi, my name's {{me.first_name|title}}. I'm a {{me.userprofile.title}}.</h1>
+            <p class="lead text-muted"><i>Welcome To My World. 👽</i></p>
           </div>
         </div>
       </div>
@@ -58,13 +51,13 @@ Start Content
   </div>
 </section>
 
-<section class="sectionSpaceSm lightBg">
+<section class="sectionSpaceSm">
   <div class="container">
     <div class="row align-items-center mb-5">
       <div class="col-md-6 text-center text-md-start">
         <h2 class="fw-bold mb-3">Explore</h2>
         <p class="lead text-muted">
-          Grab a stamp and explore the various locations in my world.
+          Take a trip to the various locations in my world.
         </p>
       </div>
       <div class="col-md-6">
@@ -72,63 +65,64 @@ Start Content
       </div>
     </div>
 
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100 text-center" style="min-height: 350px;">
-          <a href="{% url 'main:portfolios' %}">
-          <img src="{% static 'images/port.png' %}" class="card-img-top" alt="Creative Studio">
-          </a>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold">Creative Studio</h5>
-            <p class="card-text text-muted small">Some self-initiated creative experiments.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100 text-center" style="min-height: 350px;">
-          <a href="{% url 'projects:personal_projects' %}">
-          <img src="{% static 'images/projs.png' %}" class="card-img-top" alt="Personal Projects">
-          </a>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold">Personal Projects</h5>
-            <p class="card-text text-muted small">A selection of my projects and initiatives are located here.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100 text-center" style="min-height: 350px;">
-          <a href="{% url 'main:blogs' %}">
-          <img src="{% static 'images/com.png' %}" class="card-img-top" alt="Community and Open Source">
-          </a>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold">Community & Open Source</h5>
-            <p class="card-text text-muted small">Insight into my contributions to the global tech community.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100 text-center" style="min-height: 350px;">
-          <a href="{% url 'vibe_check:vibe_check' %}">
-          <img src="{% static 'images/vibe.png' %}" class="card-img-top" alt="Vibe Check">
-          </a>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold">Vibe Check</h5>
-            <p class="card-text text-muted small">Before you leave - add a song to my collaborative playlist!</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ul class="exploreList">
+      <li>
+        <a href="{% url 'main:work' %}">
+          <img src="{% static 'images/8.png' %}" alt="" class="exploreList__icon">
+          Work
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'vibe_check:vibe_check' %}">
+          <img src="{% static 'images/8.png' %}" alt="" class="exploreList__icon">
+          Vibe Check
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'projects:short_stories' %}">
+          <img src="{% static 'images/8.png' %}" alt="" class="exploreList__icon">
+          Writing
+        </a>
+      </li>
+    </ul>
   </div>
 </section>
 
+{% if highlights %}
+<section class="sectionSpaceSm lightBg">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 text-center text-md-start">
+        <h2 class="fw-bold mb-3">Highlighting</h2>
+        <p class="lead text-muted">
+            A few pieces of media I'm currently engaged with.
+        </p>
+      </div>
+    </div>
 
+    <div class="row g-4">
+      {% for h in highlights %}
+      <div class="col-6 col-md-3">
+        {% if h.link %}
+        <a href="{{ h.link }}" target="_blank" rel="noopener" class="highlightCard highlightCard--{{ h.category }}">
+        {% else %}
+        <div class="highlightCard highlightCard--{{ h.category }}">
+        {% endif %}
+          {% if h.image %}
+          <img src="{{ h.image.url }}" alt="{{ h.title }}" class="highlightCard__img">
+          {% endif %}
+          <div class="highlightCard__body">
+            <span class="highlightCard__label">{{ h.get_category_display }}</span>
+            <h3 class="highlightCard__title">{{ h.title }}</h3>
+            {% if h.creator %}<p class="highlightCard__creator">{{ h.creator }}</p>{% endif %}
+          </div>
+        {% if h.link %}</a>{% else %}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 {% endblock %}
 <!-- ================================

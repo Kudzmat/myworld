@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3 align-items-center">
+        <div class="col-md-8">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">Writing</h1>
+            <p class="lead text-muted">
+              Polonious : What do you read, my lord?<br>
+              Hamlet : Words, words, words.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectionSpaceSm">
+  <div class="container">
+    <div class="storyContent">
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">Work Blog</h2>
+      <p>
+        I have written several blog posts on various topics (mostly work related) on Medium, and I
+        invite you to
+        <a href="https://medium.com/@kudzayibamhare" target="_blank" rel="noopener">check them out</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sectionSpaceSm">
+  <div class="container">
+    <div class="storyContent mb-4">
+      <h2><img src="{% static 'images/10.png' %}" alt="" class="storyContent__icon">Short Stories</h2>
+      <p>
+        Writing has been a fun hobby of mine since childhood. I encourage you to read some of the short
+        stories I've created.
+      </p>
+      <p class="text-muted small">
+        <strong>Disclaimer:</strong> These stories are works of fiction. Any similarities to actual events
+        or persons are purely coincidental.
+      </p>
+    </div>
+    <div class="row g-4">
+      {% for obj in object_list %}
+      <div class="col-md-6">
+        <a href="{% url 'projects:short_story_detail' slug=obj.slug %}" class="storyCard">
+          <img src="{% static 'images/9.png' %}" alt="" class="storyCard__icon">
+          <div class="storyCard__body">
+            <h3 class="storyCard__title">{{ obj.title }}</h3>
+            <p class="storyCard__plot">{{ obj.plot }}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+<!-- ================================
+End Content
+================================= -->
