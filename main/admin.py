@@ -8,7 +8,9 @@ from . models import (
     Blog,
     Certificate,
     Skill,
-    Highlight
+    Highlight,
+    WorkSection,
+    Talk,
     )
 
 
@@ -49,3 +51,13 @@ class SkillAdmin(admin.ModelAdmin):
 @admin.register(Highlight)
 class HighlightAdmin(admin.ModelAdmin):
     list_display = ('id', 'category', 'title', 'creator')
+
+class TalkInline(admin.TabularInline):
+    model = Talk
+    extra = 1
+
+@admin.register(WorkSection)
+class WorkSectionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order', 'title', 'is_active')
+    list_editable = ('order', 'is_active')
+    inlines = [TalkInline]

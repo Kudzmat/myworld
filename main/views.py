@@ -8,6 +8,7 @@ from .models import (
     Testimonial,
     Certificate,
     Highlight,
+    WorkSection,
 )
 
 from django.views import generic
@@ -78,3 +79,8 @@ class BlogDetailView(generic.DetailView):
 
 class WorkView(generic.TemplateView):
     template_name = "main/work.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["sections"] = WorkSection.objects.filter(is_active=True).prefetch_related("talks")
+        return context

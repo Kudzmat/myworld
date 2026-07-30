@@ -164,6 +164,35 @@ class Highlight(models.Model):
         return f"{self.get_category_display()}: {self.title}"
 
 
+class WorkSection(models.Model):
+    class Meta:
+        verbose_name_plural = 'Work Sections'
+        verbose_name = 'Work Section'
+        ordering = ["order"]
+
+    order = models.PositiveIntegerField(default=0)
+    title = models.CharField(max_length=200)
+    body = RichTextField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Talk(models.Model):
+    class Meta:
+        verbose_name_plural = 'Talks'
+        verbose_name = 'Talk'
+
+    section = models.ForeignKey(WorkSection, related_name="talks", on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=200)
+    year = models.CharField(max_length=20, blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.year})" if self.year else self.title
+
+
 class Certificate(models.Model):
     class Meta:
         verbose_name_plural = 'Certificates'
