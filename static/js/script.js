@@ -1,3 +1,17 @@
+$('.popupCard').each(function (i) {
+  var $card = $(this);
+  setTimeout(function () {
+    $card.addClass('is-visible');
+  }, 100 + i * 150);
+  setTimeout(function () {
+    $card.removeClass('is-visible');
+  }, 6000 + i * 150);
+});
+
+$('.popupCard__close').on('click', function () {
+  $(this).closest('.popupCard').removeClass('is-visible');
+});
+
 $('.navToggle').on('click', function (e) {
   e.preventDefault();
   $('body').toggleClass('navToggleActive');

@@ -1,5 +1,12 @@
+{% load static %}
 {% if messages %}
-    {% for message in messages %}
-        {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
-    {% endfor %}
+<div class="popupStack" id="popupStack">
+  {% for message in messages %}
+  <div class="popupCard {{ message.tags }}">
+    <img src="{% static 'images/7.png' %}" alt="" class="popupCard__watermark">
+    <button type="button" class="popupCard__close" aria-label="Close">&times;</button>
+    <p class="popupCard__text">{{ message }}</p>
+  </div>
+  {% endfor %}
+</div>
 {% endif %}

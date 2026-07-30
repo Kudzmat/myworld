@@ -87,7 +87,7 @@ def vibe_check(request):
                 added_by=contributor_name,
                 song_selection=added_track_name,
             )
-            messages.success(request, f"Thanks for contributing {contributor_name}! '{added_track_name}' was added to the Vibe Check playlist!")
+            messages.success(request, f"Thanks for contributing {added_track_name} to the vibe {contributor_name}!")
             return redirect("vibe_check:vibe_check")
             
         except Exception as e:

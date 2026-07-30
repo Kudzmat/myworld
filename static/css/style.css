@@ -1041,3 +1041,64 @@ input[type=text], input[type=email], select, textarea {
   position: relative;
   z-index: 1;
 }
+
+.popupStack {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: min(360px, calc(100vw - 48px));
+}
+.popupCard {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bs-white);
+  border-left: 4px solid var(--primaryColor);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 18px 36px 18px 20px;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+.popupCard.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.popupCard.error {
+  border-left-color: #dc3545;
+}
+.popupCard__watermark {
+  position: absolute;
+  right: -16px;
+  bottom: -16px;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.popupCard__close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  color: #6c757d;
+  cursor: pointer;
+  z-index: 1;
+}
+.popupCard__text {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  font-size: 15px;
+  color: var(--baseColor);
+  padding-right: 8px;
+}
