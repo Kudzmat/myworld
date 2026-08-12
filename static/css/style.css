@@ -1018,6 +1018,19 @@ input[type=text], input[type=email], select, textarea {
   border-radius: 24px;
 }
 
+.stepGuide {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: var(--medium);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #9c9ca3;
+  background-color: rgba(156, 7, 182, 0.06);
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin: 0 auto 10px;
+}
+
 .songCard {
   position: relative;
   overflow: hidden;

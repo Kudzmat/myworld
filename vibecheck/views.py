@@ -56,10 +56,10 @@ def vibe_check(request):
             # Get the form details
             query = form.cleaned_data["query"] # song search query
             contributor_name = form.cleaned_data.get("contributor_name")
-            
 
-            # Store contributor details in the session
-            request.session["contributor_name"] = contributor_name
+            # Store contributor details in the session, if provided
+            if contributor_name:
+                request.session["contributor_name"] = contributor_name
 
             # Search for the song on Spotify
             try:
@@ -76,8 +76,13 @@ def vibe_check(request):
     if "add_track" in request.GET:
         track_uri = request.GET.get("add_track")
         try:
-            # Retrieve contributor details from the session
-            contributor_name = request.session.get("contributor_name", "Anonymous")
+            # Prefer the contributor name entered alongside the results;
+            # fall back to whatever was last saved in the session.
+            contributor_name = request.GET.get("contributor_name", "").strip()
+            if contributor_name:
+                request.session["contributor_name"] = contributor_name
+            else:
+                contributor_name = request.session.get("contributor_name", "Anonymous")
 
             sp.playlist_add_items(PLAYLIST_ID, [track_uri])  # Add the track to the playlist
             added_track_name = sp.track(track_uri)["name"] # Get the track name
@@ -100,6 +105,7 @@ def vibe_check(request):
         "added_track_name": added_track_name,
         "playlist_id": PLAYLIST_ID,
         "contributor_names": contributors,
+        "saved_contributor_name": request.session.get("contributor_name", ""),
     }
 
     return render(request, "vibecheck/vibecheck.html", context=context)
