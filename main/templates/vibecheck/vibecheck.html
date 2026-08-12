@@ -10,13 +10,28 @@
         you have a Spotify account, feel free to save the playlist and keep up with future contributions!
       </p>
 
+    <p class="stepGuide">Step 1 &middot; Search a song</p>
     <form method="POST" class="my-4 vibeCheckForm">
       {% csrf_token %}
-      {{ form.as_p }}
+      <p>
+        {{ form.query.label_tag }}
+        {{ form.query }}
+        {% for error in form.query.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </p>
       <button type="submit" class="btn btnPrimary">Search</button>
     </form>
 
     {% if results %}
+    <p class="stepGuide">Step 2 &middot; Add your name (or leave blank)</p>
+    <div class="my-4 vibeCheckForm">
+      <label for="id_contributor_name">{{ form.contributor_name.label }}</label>
+      <input type="text" id="id_contributor_name" placeholder="Leave blank for Anonymous👽" value="{{ saved_contributor_name }}">
+      <span class="helptext">{{ form.contributor_name.help_text|safe }}</span>
+    </div>
+
+    <p class="stepGuide">Step 3 &middot; Add your song to the playlist</p>
     <h3 class="mt-5">Top Matches</h3>
     <div class="row mt-4">
       {% for track in results %}
@@ -36,14 +51,29 @@
               {% else %}
                 <p class="text-muted mt-2"><small>No preview available</small></p>
               {% endif %}
-              <a href="?add_track={{ track.uri }}" class="btn btnPrimary w-100 mt-3">+ Add to Playlist</a>
+              <a href="?add_track={{ track.uri }}" class="btn btnPrimary w-100 mt-3 addTrackBtn">+ Add to Playlist</a>
             </div>
           </div>
         </div>
       {% endfor %}
     </div>
+
+    <script>
+      document.querySelectorAll('.addTrackBtn').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var nameInput = document.getElementById('id_contributor_name');
+          var name = nameInput ? nameInput.value.trim() : '';
+          var url = new URL(this.href, window.location.origin);
+          if (name) {
+            url.searchParams.set('contributor_name', name);
+          }
+          window.location.href = url.toString();
+        });
+      });
+    </script>
   {% endif %}
-  
+
 
 <!-- Playlist Embed Section -->
 <section class="sectionSpace bg-dark text-white">
