@@ -292,6 +292,37 @@ a, .btn {
 .bannerBtnCol {
 	padding-top: 15px;
 }
+.bannerQuote {
+  position: relative;
+  margin: 0;
+  padding: 4px 0 4px 24px;
+  border-left: 4px solid var(--primaryColor);
+}
+.bannerQuote::before {
+  content: "\201C";
+  position: absolute;
+  left: -6px;
+  top: -30px;
+  font-family: var(--titleFont);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--primaryColor);
+  opacity: 0.25;
+}
+.bannerQuote__text {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--baseColor);
+}
+.bannerQuote__cite {
+  display: block;
+  font-family: var(--titleFont);
+  font-style: normal;
+  font-size: 0.95rem;
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+}
 
 .sectionSpace {
   padding: 80px 0;
